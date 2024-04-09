@@ -1,7 +1,6 @@
 package hello.b01.controller;
 
 import hello.b01.dto.ReplyDTO;
-import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +24,7 @@ import java.util.Map;
 public class ReplyController {
 
 
-    @ApiOperation(value = "Replies POST", notes = "POST 방식으로 댓글 등록")
+    @Tag(name = "Replies POST", description = "POST 방식으로 댓글 등록")
     @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "댓글을 등록한다.")
     public Map<String, Long> register(
