@@ -3,6 +3,7 @@ package hello.b01.service;
 import hello.b01.domain.Board;
 import hello.b01.dto.BoardDTO;
 
+import hello.b01.dto.BoardListReplyCountDTO;
 import hello.b01.dto.PageRequestDTO;
 
 import hello.b01.dto.PageResponseDTO;
@@ -14,6 +15,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -75,4 +77,19 @@ public class BoardServiceImpl implements BoardService {
                 .total((int) result.getTotalElements())
                 .build();
     }
+
+    @Override
+    public PageResponseDTO<BoardListReplyCountDTO> listWithReplyCount(PageRequestDTO pageRequestDTO){
+        String[] types = pageRequestDTO.getTypes();
+        String keyword = pageRequestDTO.getKeyword();
+        Pageable pageable = pageRequestDTO.getPageable("bno");
+
+        Page<BoardListReplyCountDTO> result = boardRepository.searchWithReplyCount(types, keyword, pageable);
+        return PageResponseDTO.<BoardListReplyCountDTO>withAll()
+                .pageRequestDTO(pageRequestDTO)
+                .dtoList(result.getContent())
+                .total((int)result.getTotalElements())
+                .build();
+    }
+
 }

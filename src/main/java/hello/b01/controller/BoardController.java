@@ -1,6 +1,7 @@
 package hello.b01.controller;
 
 import hello.b01.dto.BoardDTO;
+import hello.b01.dto.BoardListReplyCountDTO;
 import hello.b01.dto.PageRequestDTO;
 import hello.b01.dto.PageResponseDTO;
 import hello.b01.service.BoardService;
@@ -27,11 +28,21 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    @GetMapping("/list")
-    @Operation(summary = "전체 게시물 목록을 조회 한다.")
-    public void list(PageRequestDTO pageRequestDTO, Model model) {
+//    @GetMapping("/list")
+//    @Operation(summary = "전체 게시물 목록을 조회 한다.")
+//    public void list(PageRequestDTO pageRequestDTO, Model model) {
+//
+//        PageResponseDTO<BoardDTO> responseDTO = boardService.list(pageRequestDTO);
+//
+//        log.info(responseDTO);
+//
+//        model.addAttribute("responseDTO", responseDTO);
+//    }
 
-        PageResponseDTO<BoardDTO> responseDTO = boardService.list(pageRequestDTO);
+    @GetMapping("/list")
+    public void list(PageRequestDTO pageRequestDTO, Model model){
+
+        PageResponseDTO<BoardListReplyCountDTO> responseDTO = boardService.listWithReplyCount(pageRequestDTO);
 
         log.info(responseDTO);
 
