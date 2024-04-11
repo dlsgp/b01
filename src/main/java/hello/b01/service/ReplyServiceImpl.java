@@ -58,6 +58,7 @@ public class ReplyServiceImpl implements ReplyService{
         replyRepository.deleteById(rno);
     }
 
+
     @Override
     public PageResponseDTO<ReplyDTO> getListOfBoard(Long bno, PageRequestDTO pageRequestDTO){
         Pageable pageable = PageRequest.of(pageRequestDTO.getPage() <=0? 0: pageRequestDTO.getPage() -1,
@@ -75,5 +76,7 @@ public class ReplyServiceImpl implements ReplyService{
                 .total((int)result.getTotalElements())
                 .build();
     }
+
+
 
 }
