@@ -48,7 +48,7 @@ public class ReplyController {
 
         Long rno = replyService.register(replyDTO);
 
-        resultMap.put("rno", 111L);
+        resultMap.put("rno", rno);
 
         return resultMap;
 
