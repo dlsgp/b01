@@ -1,9 +1,6 @@
 package hello.b01.service;
 
-import hello.b01.dto.BoardDTO;
-import hello.b01.dto.BoardListReplyCountDTO;
-import hello.b01.dto.PageResponseDTO;
-import hello.b01.dto.PageRequestDTO;
+import hello.b01.dto.*;
 
 public interface BoardService {
     Long register(BoardDTO boardDTO);
@@ -17,4 +14,6 @@ public interface BoardService {
     PageResponseDTO<BoardDTO> list(PageRequestDTO pageRequestDTO);
 
     PageResponseDTO<BoardListReplyCountDTO> listWithReplyCount(PageRequestDTO pageRequestDTO);
+
+    PageResponseDTO<BoardListAllDTO> listWithAll(PageRequestDTO pageRequestDTO);
 }

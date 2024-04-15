@@ -1,12 +1,8 @@
 package hello.b01.service;
 
 import hello.b01.domain.Board;
-import hello.b01.dto.BoardDTO;
+import hello.b01.dto.*;
 
-import hello.b01.dto.BoardListReplyCountDTO;
-import hello.b01.dto.PageRequestDTO;
-
-import hello.b01.dto.PageResponseDTO;
 import hello.b01.repository.BoardRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -90,6 +86,11 @@ public class BoardServiceImpl implements BoardService {
                 .dtoList(result.getContent())
                 .total((int)result.getTotalElements())
                 .build();
+    }
+
+    @Override
+    public PageResponseDTO<BoardListAllDTO> listWithAll(PageRequestDTO pageRequestDTO){
+        return null;
     }
 
 }
