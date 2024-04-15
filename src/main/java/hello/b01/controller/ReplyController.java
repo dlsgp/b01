@@ -24,7 +24,7 @@ import java.util.Map;
 @Log4j2
 @RequiredArgsConstructor
 @Tag(name="reply-controller", description = "Reply Controller")
-//@RequiredArgsConstructor
+
 public class ReplyController {
 
     private final ReplyService replyService;
