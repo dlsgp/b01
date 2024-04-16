@@ -208,7 +208,7 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
                             .build()
                     ).collect(Collectors.toList());
 
-            dto.setBoardImages(imageDTOS);
+            dto.setBoardImages(imageDTOS);  //처리된 BoardImageDTO들을 추가
 
             return dto;
         }).collect(Collectors.toList());

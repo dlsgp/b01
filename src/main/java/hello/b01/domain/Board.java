@@ -29,15 +29,11 @@ public class Board extends BaseEntity{
     @Column(length = 50, nullable = false)
     private String writer;
 
-    @Column
-    private LocalDateTime regDate;
+
 
     public void change(String title, String content){
         this.title = title;
         this.content = content;
-    }
-    public LocalDateTime getRegDate() {
-        return regDate;
     }
 
 

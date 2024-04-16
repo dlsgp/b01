@@ -204,7 +204,6 @@ public class BoardRepositoryTests {
         }// end for
     }
 
-
     @Transactional
     @Test
     public void testSearchImageReplyCount(){
