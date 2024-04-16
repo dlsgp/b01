@@ -26,7 +26,7 @@ import java.util.*;
 @Tag(name="up-down-controller", description = "Up Down Controller")
 public class UpDownController {
 
-    @Value("${hello.b01.upload.path}")  // import 시에 springframework으로 시작하는 Value
+    @Value("C://upload")  // import 시에 springframework으로 시작하는 Value
     private String uploadPath;
 
     // 첨부파일 저장
