@@ -1,8 +1,6 @@
 package hello.b01.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -31,4 +29,6 @@ public class BoardImage implements Comparable<BoardImage>{
     public void changeBoard(Board board){
         this.board = board;
     }
+
+
 }

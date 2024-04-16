@@ -25,6 +25,7 @@ public class BoardServiceImpl implements BoardService {
     private final ModelMapper modelMapper;
     private final BoardRepository boardRepository;
 
+    @Transactional
     @Override
     public Long register(BoardDTO boardDTO){
         Board board = dtoToEntity(boardDTO);
