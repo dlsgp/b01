@@ -4,12 +4,15 @@ import hello.b01.dto.*;
 import hello.b01.service.BoardService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.core.io.Resource;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,7 +23,6 @@ import java.io.File;
 import java.nio.file.Files;
 import java.util.List;
 
-
 @Controller
 @RequestMapping("/board")
 @Log4j2
@@ -28,7 +30,7 @@ import java.util.List;
 @Tag(name="board", description = "게시물 관련 API")
 public class BoardController {
 
-    @Value("${hello.b01.upload.path}")   //import 시에 springframework으로 시작하는 Value
+    @Value("${hello.upload.path}")   //import 시에 springframework으로 시작하는 Value
     private String uploadPath;
 
     private final BoardService boardService;
@@ -57,9 +59,11 @@ public class BoardController {
         model.addAttribute("responseDTO", responseDTO);
     }
 
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/register")
     public void registerGET() {
     }
+
 
     @PostMapping("/register")// localhost:8080/board/register
     @Operation(summary ="새로운 게시물을 추가한다.")
