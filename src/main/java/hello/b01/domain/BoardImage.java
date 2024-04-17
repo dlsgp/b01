@@ -14,8 +14,10 @@ public class BoardImage implements Comparable<BoardImage>{
     @Id
     private String uuid;
 
+    @Column
     private String fileName;
 
+    @Column
     private int ord;
 
     @ManyToOne

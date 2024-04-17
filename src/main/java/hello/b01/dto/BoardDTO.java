@@ -1,14 +1,13 @@
 package hello.b01.dto;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
 
 @Data
 @Builder
@@ -29,6 +28,7 @@ public class BoardDTO {
     private LocalDateTime regDate;
     private LocalDateTime modDate;
 
+    @Column(length = 100)
     // 첨부파일의 이름들
     private List<String> fileNames;
 }

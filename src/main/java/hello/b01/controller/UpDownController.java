@@ -2,6 +2,7 @@ package hello.b01.controller;
 
 import hello.b01.dto.upload.UploadFileDTO;
 import hello.b01.dto.upload.UploadResultDTO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -12,6 +13,7 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
@@ -21,12 +23,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
+
 @RestController
 @Log4j2
 @Tag(name="up-down-controller", description = "Up Down Controller")
 public class UpDownController {
 
-    @Value("C://upload")  // import 시에 springframework으로 시작하는 Value
+    @Value( "${hello.b01.upload.path}")  // import 시에 springframework으로 시작하는 Value
     private String uploadPath;
 
     // 첨부파일 저장
