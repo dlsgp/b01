@@ -48,12 +48,7 @@ public class BoardController {
 //        model.addAttribute("responseDTO", responseDTO);
 //    }
 
-// 임의로 한 것
-//    @GetMapping("/some-path")
-//    public String myMethod(Model model, @AuthenticationPrincipal UserDetails currentUser) {
-//        model.addAttribute("principal", currentUser);
-//        return "board/register";
-//    }
+
 
     @GetMapping("/list")
     public void list(PageRequestDTO pageRequestDTO, Model model){
@@ -105,6 +100,7 @@ public class BoardController {
         model.addAttribute("dto", boardDTO);
     }
 
+    @PreAuthorize("principal.username == #boardDTO.writer")
     @PostMapping("/modify")
     @Operation(summary = "게시물을 수정 합니다.")
     public String modify(PageRequestDTO pageRequestDTO,
@@ -135,6 +131,7 @@ public class BoardController {
         return "redirect:/board/read";
     }
 
+    @PreAuthorize("principal.username == #boardDTO.writer")
     @PostMapping("/remove")
     @Operation(summary = "게시물 하나를 삭제 합니다.")
     public String remove(@RequestParam("bno") BoardDTO boardDTO, RedirectAttributes redirectAttributes) {
