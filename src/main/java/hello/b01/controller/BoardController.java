@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Value;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -46,6 +48,12 @@ public class BoardController {
 //        model.addAttribute("responseDTO", responseDTO);
 //    }
 
+// 임의로 한 것
+//    @GetMapping("/some-path")
+//    public String myMethod(Model model, @AuthenticationPrincipal UserDetails currentUser) {
+//        model.addAttribute("principal", currentUser);
+//        return "board/register";
+//    }
 
     @GetMapping("/list")
     public void list(PageRequestDTO pageRequestDTO, Model model){
